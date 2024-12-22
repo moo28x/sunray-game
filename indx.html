@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Ray - Always Be Radiant 🌻</title>
+  <style>
+    /* تخصيص تنسيق الصفحة العامة */
+    body {
+      font-family: Arial, sans-serif; /* اختيار نوع الخط */
+      margin: 0; /* إزالة المسافات من الأطراف */
+      padding: 0; /* إزالة الحشو */
+      display: flex; /* استخدام Flexbox لتنسيق العناصر */
+      flex-direction: column; /* ترتيب العناصر عموديًا */
+      align-items: center; /* محاذاة العناصر في المنتصف */
+      justify-content: center; /* محاذاة العناصر عموديًا في المنتصف */
+      background-color: #fff; /* تحديد خلفية الصفحة باللون الأبيض */
+      color: #000; /* تحديد لون الخط بالأسود */
+    }
+
+    /* تنسيق عنوان الصفحة */
+    h1 {
+      color: #f7c600; /* اللون الأصفر للشعار */
+      text-align: center; /* محاذاة النص في المنتصف */
+      margin-bottom: 20px; /* إضافة مسافة من الأسفل */
+    }
+
+    /* تنسيق حاوية الأسئلة */
+    .question-container {
+      text-align: center; /* محاذاة النص في المنتصف */
+      margin-bottom: 20px; /* إضافة مسافة من الأسفل */
+    }
+
+    /* تنسيق النصوص داخل الأسئلة */
+    .question-container p {
+      font-size: 1.2em; /* تكبير حجم الخط */
+      margin-bottom: 20px; /* إضافة مسافة من الأسفل */
+    }
+
+    /* تنسيق الأزرار */
+    button {
+      background-color: #f7c600; /* اللون الأصفر الخلفية */
+      color: #000; /* اللون الأسود للنص */
+      border: none; /* إزالة الحدود */
+      padding: 15px 30px; /* إضافة حشو داخل الأزرار */
+      margin: 10px; /* إضافة مسافة حول الأزرار */
+      font-size: 1em; /* تحديد حجم الخط داخل الأزرار */
+      border-radius: 5px; /* تدوير الزوايا لجعل الأزرار أكثر سلاسة */
+      cursor: pointer; /* تغيير شكل المؤشر عند التمرير على الأزرار */
+    }
+
+    /* تنسيق الزر للرجوع للسؤال السابق */
+    .back-button {
+      padding: 5px 15px; /* تحديد حجم الزر */
+      font-size: 0.8em; /* تقليل حجم الخط */
+      margin: 5px auto 10px auto; /* إضافة مسافة حول الزر */
+      display: block; /* جعل الزر يعرض في وسط الصفحة */
+    }
+
+    /* تنسيق تذييل الصفحة */
+    .footer {
+      position: absolute; /* تحديد موقع التذييل بشكل مطلق */
+      bottom: 20px; /* تحديد المسافة من الأسفل */
+      text-align: center; /* محاذاة النص في المنتصف */
+      font-size: 0.9em; /* تقليل حجم الخط */
+      color: #f7c600; /* اللون الأصفر */
+    }
+
+    /* تنسيق الأيقونات الاجتماعية */
+    .social-icons img {
+      width: 24px; /* تحديد حجم الأيقونات */
+      margin: 0 10px; /* إضافة مسافة بين الأيقونات */
+    }
+  </style>
+</head>
+<body>
+  <!-- العنوان الرئيسي للصفحة -->
+  <h1>Welcome to Sun Ray ☀️</h1>
+
+  <!-- حاوية الأسئلة -->
+  <div class="question-container" id="question-container">
+    <p id="question-text">Start the game to find your perfect Sun Ray drink!</p>
+    <button onclick="startGame()">Start</button> <!-- زر لبدء اللعبة -->
+  </div>
+
+  <!-- تذييل الصفحة مع روابط وسائل التواصل الاجتماعي -->
+  <div class="footer">
+    شاركونا تصويركم على حسابنا
+    <br>
+    <a href="https://instagram.com/sunray.sa" target="_blank">@sunray.sa</a>
+    <div class="social-icons">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/TikTok_logo_2018.svg/1024px-TikTok_logo_2018.svg.png" alt="TikTok">
+    </div>
+  </div>
+
+  <script>
+    /* أسئلة اللعبة */
+    const questions = [
+      { text: "ما الذي يريحك أكثر؟", options: ["الشمس الساطعة", "الجو الغائم"] }, // السؤال الأول
+      { text: "تفضل القهوة؟", options: ["باردة", "حارة"] }, // السؤال الثاني
+      { text: "أفضل الأوقات لديك؟", options: ["الصباح", "المساء"] }, // السؤال الثالث
+      { text: "ما هو أسلوبك في الاسترخاء؟", options: ["قراءة كتاب", "الاستماع للموسيقى"] }, // السؤال الرابع
+      { text: "كيف تحب قضاء وقتك؟", options: ["مع الأصدقاء", "وحيدًا"] }, // السؤال الخامس
+      { text: "تفضل طعم الحلويات؟", options: ["حلو جدًا", "متوازن"] }, // السؤال السادس
+      { text: "نوع القهوة المفضل؟", options: ["غامق وقوي", "خفيف وممتع"] }, // السؤال السابع
+      { text: "ما هو مزاجك الحالي؟", options: ["نشط", "مسترخٍ"] } // السؤال الثامن
+    ];
+
+    /* قائمة المشروبات والحلويات المتاحة */
+    const menu = [
+      { drink: "قهوة مقطرة V60", sweet: "كوكيز", image: "https://via.placeholder.com/200?text=V60+Coffee" }, 
+      { drink: "لاتيه", sweet: "فرينش توست كندر", image: "https://via.placeholder.com/200?text=Latte" },
+      { drink: "اسبريسو", sweet: "كرواسون بالجبن", image: "https://via.placeholder.com/200?text=Espresso" },
+      { drink: "فلات وايت", sweet: "تراميسو كلاسيك", image: "https://via.placeholder.com/200?text=Flat+White" },
+      { drink: "سبانش لاتيه", sweet: "بودنق", image: "https://via.placeholder.com/200?text=Spanish+Latte" },
+      { drink: "سولتد كاميل", sweet: "ميني كوكيز", image: "https://via.placeholder.com/200?text=Salted+Caramel" },
+      { drink: "هوت شوكلت", sweet: "تراميسو مانجو", image: "https://via.placeholder.com/200?text=Hot+Chocolate" },
+      { drink: "ماتشا لاتيه", sweet: "كرانشي بايتز", image: "https://via.placeholder.com/200?text=Matcha+Latte" }
+    ];
+
+    let currentQuestion = 0; // متغير لتتبع السؤال الحالي
+    let answers = []; // متغير لتخزين الإجابات
+
+    // بدء اللعبة
+    function startGame() {
+      currentQuestion = 0; // إعادة تعيين السؤال الحالي
+      answers = []; // إعادة تعيين الإجابات
+      showQuestion(); // عرض السؤال الأول
+    }
+
+    // عرض السؤال الحالي
+    function showQuestion() {
+      if (currentQuestion < questions.length) { // إذا كان هناك أسئلة متبقية
+        const container = document.getElementById("question-container");
+        const question = questions[currentQuestion];
+        container.innerHTML = `
+          <button class="back-button" onclick="goBack()">السؤال السابق</button> <!-- زر الرجوع للسؤال السابق -->
+          <p>${question.text}</p> <!-- النص الخاص بالسؤال -->
+          ${question.options
+            .map(
+              (option, index) =>
+                `<button onclick="selectAnswer(${index})">${option}</button>` // عرض الأزرار للاختيار
+            )
+            .join("")}
+        `;
+      } else {
+        showResult(); // إذا كانت الأسئلة قد انتهت، عرض النتيجة
+      }
+    }
+
+    // اختيار الإجابة
+    function selectAnswer(optionIndex) {
+      answers[currentQuestion] = optionIndex; // تخزين الإجابة
+      currentQuestion++; // الانتقال للسؤال التالي
+      showQuestion(); // عرض السؤال التالي
+    }
+
+    // الرجوع للسؤال السابق
+    function goBack() {
+      if (currentQuestion > 0) { // إذا كان هناك سؤال سابق
+        currentQuestion--; // العودة للسؤال السابق
+        showQuestion(); // عرض السؤال السابق
+      }
+    }
+
+    // عرض النتيجة بناءً على الإجابات
+    function showResult() {
+      const moodIndex = answers.reduce((sum, value) => sum + value, 0) % menu.length; // حساب المزاج بناءً على الإجابات
+      const result = menu[moodIndex]; // تحديد النتيجة بناءً على المزاج
+      const container = document.getElementById("question-container");
+      container.innerHTML = `
+        <p>تحليل مزاجك: ${result.drink} مع ${result.sweet}</p> <!-- عرض النتيجة -->
+        <img src="${result.image}" alt="${result.drink}" style="width: 200px; height: auto;"> <!-- عرض صورة المشروب -->
+        <p>هذه القهوة تناسب مزاجك لأنها مشعة مثل شمسنا! 🌻</p> <!-- تعليق يناسب النتيجة -->
+        <button onclick="capturePhoto()">التقط صورة</button> <!-- زر لتصوير العميل -->
+        <button onclick="skipPhoto()">تخطي</button> <!-- زر لتخطي التصوير -->
+      `;
+    }
+
+    // تصوير العميل
+    function capturePhoto() {
+      alert("فتح الكاميرا لتصوير الصورة! (تحتاج لإضافة الكود الخاص بالكاميرا)");
+    }
+
+    // تخطي التصوير
+    function skipPhoto() {
+      alert("عرض عبارة تحفيزية!");
+      startGame(); // العودة إلى بداية اللعبة
+    }
+  </script>
+</body>
+</html>
